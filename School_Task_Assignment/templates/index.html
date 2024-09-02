@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Task Assignment</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+
+<body>
+    <div class="signin">
+        <img src="{% static 'image/logimg.png' %}" alt="sign in image" class="signin__img" >
+        <form action="" class="signin__form">
+            <h1 class="signin__title" >Welcome to School Task Assignment</h1>
+            <div class="signin__content">
+                <button class="login__button" onclick="return redirect_login()">Login</button>
+                <button class="signup__button" onclick="return redirect_signup()">Sign Up</button>
+        </form>
+    </div>
+</body>
+
+<script>
+    function redirect_login() {
+        window.location.href = {% url 'login' %};
+        return false;
+    }
+
+    function redirect_signup() {
+        window.location.href = {% url 'signup' %};
+        return false;
+    }
+</script>
+
+</html>

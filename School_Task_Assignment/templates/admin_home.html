@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+
+<body>
+    <div class="home">
+        <img src="{% static 'image/logimg.png' %}" alt="background image" class="home__img">
+        <div class="home__container">
+            <h1 class="home__title">Welcome, {{ username }}</h1>
+            <div class="home__content">
+                <a href="{% url 'admin_add_task' %}"><button class="redirect__button">Add New Task</button></a>
+                <a href="{% url 'tasklist' %}"><button class="redirect__button">View Tasks</button></a>
+            </div>
+
+            <a href="{% url 'index' %}" class="Logout">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>

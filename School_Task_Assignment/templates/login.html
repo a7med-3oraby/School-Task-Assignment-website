@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <link  href="{% static 'https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css' %}"rel="stylesheet" /> 
+    <!-- Fonts -->
+
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+
+<body>
+    <div class="signin">
+        
+        <img src="{% static 'image/logimg.png' %}" alt="sign in image" class="signin__img" >
+        <form action="" class="signin__form">
+            <h1 class="signin__title" >Login</h1>
+            <div class="signin__content">
+                <div class="signin__box">
+                    <i class="ri-user-3-line signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="text" required class="signin__input" placeholder=" " id="username">
+                        <label for="" class="signin__label">Username</label>
+                    </div>
+                </div>
+            </div>
+            <div class="signin__content">
+                <div class="signin__box">
+                    <i class="ri-lock-2-fill signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="password" required class="signin__input" id="password" placeholder=" ">
+                        <label for="" class="signin__label">Password</label>
+                        <i class="ri-eye-off-line signin__eye " id="signin_eye"></i>
+                    </div>
+                </div>
+                <div class="signin__check">
+                    <div class="signin__check-group">
+                        <input type="checkbox" class="signin__check-input">
+                        <label class="signin__check-label">Remember me</label>
+                    </div>
+                </div>
+                <button class="login__button" onclick="return login()">Login</button>
+                <p class="login__signup">
+                    Don't have an account? <a href="{% url 'signup' %}" class="Signup">Sign Up</a>
+                </p>
+        </form>
+    </div>
+   
+    
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const loginButton = document.querySelector(".login__button");
+    
+        loginButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+    
+            let data = {
+                username: username,
+                password: password
+            };
+    
+            fetch('/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Login successful!");
+                    if (data.type === 'Admin') {
+                        window.location.href = "{% url 'admin_home' %}";
+                    } else {
+                        window.location.href = "{% url 'teacher_home' %}";
+                    }
+                } else {
+                    alert(data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred. Please try again.");
+            });
+        });
+    
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; cookies.length > i; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+
+</html>

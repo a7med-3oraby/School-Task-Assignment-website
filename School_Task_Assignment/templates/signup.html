@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+<body>
+    <div class="signin">
+        <img src="{% static 'image/logimg.png' %}" alt="sign in image" class="signin__img">
+        <form class="signin__form">
+            <h1 class="signin__title">Sign Up</h1>
+            <div class="signin__content">
+                <div class="signin__box">
+                    <i class="ri-user-3-line signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="email" required class="signin__input" placeholder=" " id="email">
+                        <label for="" class="signin__label">Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="signin__content">
+                <div class="signin__box">
+                    <i class="ri-user-3-line signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="text" required class="signin__input" placeholder=" " id="username">
+                        <label for="" class="signin__label">Username</label>
+                    </div>
+                </div>
+            </div>
+            <div class="signin__content">
+                <div class="signin__box">
+                    <i class="ri-lock-2-fill signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="password" required class="signin__input" id="password" placeholder=" ">
+                        <label for="" class="signin__label">Password</label>
+                        <i class="ri-eye-off-line signin__eye" id="signin_eye"></i>
+                    </div>
+                </div>
+                <div class="signin__box">
+                    <i class="ri-lock-2-fill signin__icon"></i>
+                    <div class="signin__box-input">
+                        <input type="password" required class="signin__input" id="confirm_password" placeholder=" ">
+                        <label for="" class="signin__label">Confirm Password</label>
+                    </div>
+                </div>
+                <div class="signin__check">
+                    <div class="signin__check-group">
+                        <input type="checkbox" class="signin__check-input" name="admin_checkbox">
+                        <label class="signin__check-label">Admin</label>
+                    </div>
+                </div>
+                <button class="signup__button" id="SignUpButton" data-login-url="{% url 'login' %}">Sign Up</button>
+                <p class="signup__login">Already have an account? <a href="{% url 'login' %}" class="Login">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/signupJS.js' %}"></script>
+</body>
+</html>

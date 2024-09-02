@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+
+<body>
+    <div class="home">
+        <img src="{% static 'image/logimg.png' %}" alt="background image" class="home__img">
+        <div class="home__container">
+            <h1 class="home__title">Welcome, {{ username }}</h1>
+            <div class="home__content">
+                <a href="{% url 'viewTeachertasks' %}"><button class="redirect__button">View Task List</button></a>
+                <a href="{% url 'teacher_completed_tasks' %}"><button class="redirect__button">View Completed Tasks</button></a>
+            </div>
+
+            <a href="{% url 'index' %}" class="Logout">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>

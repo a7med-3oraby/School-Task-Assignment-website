@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <link rel="stylesheet" href="{% static 'css/taskdetails.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'viewTeachertasks' %}">View Pending Tasks</a> |
+        <a href="{% url 'teacher_completed_tasks' %}">View Completed Tasks</a> |
+        <a href="{% url 'index' %}">Logout</a>
+    </nav>
+
+    <h2>Task Details</h2>
+    
+    <div id="taskDetails" class="details_container">
+        <p>ID: {{ task.id }}</p>
+        <p>Title: {{ task.title }}</p>
+        <p>Priority: {{ task.priority }}</p>
+        <p>Description: {{ task.description }}</p>
+        <p>Assigned by: {{ task.admin.username }}</p>
+    </div>
+</body>
+</html>

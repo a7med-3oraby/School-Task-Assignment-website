@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f5e9; 
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+select {
+    display:inline-block;
+    margin-left: 15px;
+    position: relative;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    color: #444;
+}
+
+.details_container {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.task-image {
+    width: 900px;
+    height: 600px;
+    display: block;
+    margin: 20px auto;
+}
+
+table th {
+    background-color: #4CAF50; 
+    color: white; 
+}
+
+table td {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
